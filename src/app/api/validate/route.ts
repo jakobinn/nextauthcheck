@@ -17,19 +17,16 @@ export async function POST(request: NextRequest) {
       redirect: false,
     };
 
-    axios({
+    let response = await axios({
       method: 'post',
-      url: 'http://localhost:5555/api/auth/signin/validate',
+      url: 'http://localhost:5555/api/auth/callback/validate',
       data: data,
       headers: {
           'Content-Type': 'application/json'
       }
-  }).then(response => {
-      console.log("res ", response.data);
     })
-    .catch(error => {
-        console.error(error);
-    });
+
+    console.log("res: ", response.data);
 
 
     return NextResponse.json({
